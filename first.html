@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments Table</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    />
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-5">
+
+        <!-- Heading -->
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-primary">COMMENTS TABLE</h1>
+            
+        </div>
+
+        <!-- Table Card -->
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0">Comments Details</h4>
+            </div>
+
+            <div class="card-body p-0">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover table-striped align-middle mb-0">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col" class="text-center">ID</th>
+                                <th scope="col">POST ID</th>
+                                <th scope="col">USER NAME</th>
+                                <th scope="col">FULL NAME</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="result">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    fetch('https://dummyjson.com/comments')
+        .then((response) => {
+
+            response.json()
+                .then((results) => {
+
+                    let result = document.getElementById('result');
+
+                    results.comments.map((eachName) => {
+
+                        result.innerHTML += `
+                            <tr>
+                                <th scope="row" class="text-center">
+                                    <span class="badge bg-danger rounded-pill">
+                                        ${eachName?.id}
+                                    </span>
+                                </th>
+
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        ${eachName?.postId}
+                                    </span>
+                                </td>
+
+                                <td class="fw-semibold">
+                                    ${eachName?.user.username}
+                                </td>
+
+                                <td>
+                                    ${eachName?.user.fullName}
+                                </td>
+                            </tr>
+                        `;
+
+                    });
+
+                    console.log(results);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+</script>
+
+</html>
+

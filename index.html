@@ -4,113 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comments Table</title>
 
+    <title>Fashion Store</title>
+
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous"
-    />
+    >
 </head>
 
 <body class="bg-light">
 
-    <div class="container py-5">
-
-        <!-- Heading -->
-        <div class="text-center mb-4">
-            <h1 class="fw-bold text-primary">COMMENTS TABLE</h1>
-            
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-center" href="#">
+                 STORE
+            </a>
         </div>
+    </nav>
 
-        <!-- Table Card -->
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
 
-            <div class="card-header bg-primary text-white text-center py-3">
-                <h4 class="mb-0">Comments Details</h4>
+    <!-- Main Section -->
+    <div class="container min-vh-100 d-flex align-items-center">
+
+        <div class="row w-100 justify-content-center">
+
+            <!-- Heading -->
+            <div class="col-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">
+                    Welcome to Fashion Store
+                </h1>
+
+                <p class="lead text-secondary">
+                    Explore our collection and manage your shopping easily.
+                </p>
             </div>
 
-            <div class="card-body p-0">
 
-                <div class="table-responsive">
+            <!-- Clothing -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow text-center border-0">
+                    <div class="card-body p-5">
 
-                    <table class="table table-hover table-striped align-middle mb-0">
+                        <h2 class="card-title fw-bold">
+                            Clothing
+                        </h2>
 
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col" class="text-center">ID</th>
-                                <th scope="col">POST ID</th>
-                                <th scope="col">USER NAME</th>
-                                <th scope="col">FULL NAME</th>
-                            </tr>
-                        </thead>
+                        <p class="card-text text-secondary">
+                            Explore our latest clothing collection.
+                        </p>
 
-                        <tbody id="result">
-                        </tbody>
+                        <a href="./first.html"
+                           class="btn btn-dark px-4">
+                            View Clothing
+                        </a>
 
-                    </table>
-
+                    </div>
                 </div>
-
             </div>
-        </div>
 
+
+            <!-- Comments -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow text-center border-0">
+                    <div class="card-body p-5">
+
+                        <h2 class="card-title fw-bold">
+                            Comments
+                        </h2>
+
+                        <p class="card-text text-secondary">
+                            Read and share your valuable comments.
+                        </p>
+
+                        <a href="./second.html"
+                           class="btn btn-primary px-4">
+                            View Comments
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Cart -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow text-center border-0">
+                    <div class="card-body p-5">
+
+                        <h2 class="card-title fw-bold">
+                            Cart
+                        </h2>
+
+                        <p class="card-text text-secondary">
+                            Check the items you have added to your cart.
+                        </p>
+
+                        <a href="./second1.html"
+                           class="btn btn-success px-4">
+                            View Cart
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">
+            © 2026 Fashion Store
+        </p>
+    </footer>
+
 </body>
-
-<script>
-
-    fetch('https://dummyjson.com/comments')
-        .then((response) => {
-
-            response.json()
-                .then((results) => {
-
-                    let result = document.getElementById('result');
-
-                    results.comments.map((eachName) => {
-
-                        result.innerHTML += `
-                            <tr>
-                                <th scope="row" class="text-center">
-                                    <span class="badge bg-danger rounded-pill">
-                                        ${eachName?.id}
-                                    </span>
-                                </th>
-
-                                <td>
-                                    <span class="badge bg-secondary">
-                                        ${eachName?.postId}
-                                    </span>
-                                </td>
-
-                                <td class="fw-semibold">
-                                    ${eachName?.user.username}
-                                </td>
-
-                                <td>
-                                    ${eachName?.user.fullName}
-                                </td>
-                            </tr>
-                        `;
-
-                    });
-
-                    console.log(results);
-
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-
-</script>
-
 </html>
 
